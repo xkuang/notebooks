@@ -1,0 +1,1758 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Corpus}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}148}]:} \PY{c}{\PYZsh{} Lots of imports..}
+          \PY{k+kn}{import} \PY{n+nn}{glob}
+          \PY{k+kn}{import} \PY{n+nn}{pybrain}
+          \PY{k+kn}{from} \PY{n+nn}{pybrain.structure} \PY{k+kn}{import} \PY{n}{FeedForwardNetwork}
+          \PY{k+kn}{from} \PY{n+nn}{pybrain.structure} \PY{k+kn}{import} \PY{n}{LinearLayer}\PY{p}{,} \PY{n}{SigmoidLayer}
+          \PY{k+kn}{from} \PY{n+nn}{pybrain.structure} \PY{k+kn}{import} \PY{n}{FullConnection}
+          \PY{k+kn}{from} \PY{n+nn}{pybrain.datasets} \PY{k+kn}{import} \PY{n}{SupervisedDataSet}
+          \PY{k+kn}{from} \PY{n+nn}{pybrain.supervised.trainers} \PY{k+kn}{import} \PY{n}{BackpropTrainer}
+          \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+          \PY{k+kn}{import} \PY{n+nn}{datetime}
+          \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+          \PY{k+kn}{import} \PY{n+nn}{random}
+          \PY{k+kn}{import} \PY{n+nn}{ast}
+          \PY{k+kn}{import} \PY{n+nn}{time}
+          \PY{k+kn}{import} \PY{n+nn}{sqlalchemy}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy} \PY{k+kn}{import} \PY{o}{*}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy} \PY{k+kn}{import} \PY{n}{event}
+          \PY{k+kn}{import} \PY{n+nn}{sqlite3}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy.ext.declarative} \PY{k+kn}{import} \PY{n}{declarative\PYZus{}base}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy.orm} \PY{k+kn}{import} \PY{o}{*}
+          \PY{k+kn}{import} \PY{n+nn}{urllib2}
+          \PY{k+kn}{import} \PY{n+nn}{urllib}
+          \PY{k+kn}{import} \PY{n+nn}{json}
+          \PY{k+kn}{import} \PY{n+nn}{glob}
+          \PY{k+kn}{import} \PY{n+nn}{pprint}
+          \PY{k+kn}{import} \PY{n+nn}{dateutil.parser}
+          \PY{k+kn}{import} \PY{n+nn}{pprint}
+          \PY{k+kn}{import} \PY{n+nn}{re}
+          \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k+kn}{import} \PY{n}{linear\PYZus{}model}\PY{p}{,} \PY{n}{datasets}
+          \PY{k+kn}{import} \PY{n+nn}{time}
+          \PY{k+kn}{from} \PY{n+nn}{sklearn.naive\PYZus{}bayes} \PY{k+kn}{import} \PY{n}{GaussianNB}
+          \PY{k+kn}{import} \PY{n+nn}{nltk}
+          \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k+kn}{import} \PY{n}{defaultdict}
+          \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k+kn}{import} \PY{n}{svm}
+          \PY{n}{pp} \PY{o}{=} \PY{n}{pprint}\PY{o}{.}\PY{n}{PrettyPrinter}\PY{p}{(}\PY{n}{indent}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+          
+          
+          \PY{k+kn}{import} \PY{n+nn}{numpy}
+          \PY{k+kn}{import} \PY{n+nn}{time}
+          \PY{k+kn}{import} \PY{n+nn}{sqlalchemy}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy} \PY{k+kn}{import} \PY{o}{*}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy} \PY{k+kn}{import} \PY{n}{event}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy.dialects.mysql} \PY{k+kn}{import} \PY{n}{LONGTEXT}
+          \PY{k+kn}{import} \PY{n+nn}{sqlite3}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy.ext.declarative} \PY{k+kn}{import} \PY{n}{declarative\PYZus{}base}
+          \PY{k+kn}{from} \PY{n+nn}{sqlalchemy.orm} \PY{k+kn}{import} \PY{o}{*}
+          \PY{k+kn}{import} \PY{n+nn}{urllib2}
+          \PY{k+kn}{import} \PY{n+nn}{urllib}
+          \PY{k+kn}{import} \PY{n+nn}{json}
+          \PY{k+kn}{import} \PY{n+nn}{pprint}
+          \PY{k+kn}{import} \PY{n+nn}{dateutil.parser}
+          \PY{k+kn}{import} \PY{n+nn}{gevent}
+          \PY{k+kn}{import} \PY{n+nn}{datetime}
+          \PY{k+kn}{import} \PY{n+nn}{marshal}
+          
+          \PY{k+kn}{import} \PY{n+nn}{re}\PY{o}{,} \PY{n+nn}{math}\PY{o}{,} \PY{n+nn}{collections}\PY{o}{,} \PY{n+nn}{itertools}
+          \PY{k+kn}{import} \PY{n+nn}{nltk}\PY{o}{,} \PY{n+nn}{nltk.classify.util}\PY{o}{,} \PY{n+nn}{nltk.metrics}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.classify} \PY{k+kn}{import} \PY{n}{NaiveBayesClassifier}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.metrics} \PY{k+kn}{import} \PY{n}{BigramAssocMeasures}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.probability} \PY{k+kn}{import} \PY{n}{FreqDist}\PY{p}{,} \PY{n}{ConditionalFreqDist}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+          \PY{k+kn}{import} \PY{n+nn}{csv}
+          \PY{k+kn}{import} \PY{n+nn}{re}
+          \PY{k+kn}{import} \PY{n+nn}{nltk.classify.util}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.classify} \PY{k+kn}{import} \PY{n}{NaiveBayesClassifier}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.corpus} \PY{k+kn}{import} \PY{n}{movie\PYZus{}reviews}
+          \PY{k+kn}{from} \PY{n+nn}{sklearn.svm} \PY{k+kn}{import} \PY{n}{LinearSVC}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.classify.scikitlearn} \PY{k+kn}{import} \PY{n}{SklearnClassifier}
+          \PY{k+kn}{import} \PY{n+nn}{os}
+          \PY{k+kn}{import} \PY{n+nn}{copy}
+          
+          \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{division}  \PY{c}{\PYZsh{} Python 2 users only}
+          \PY{k+kn}{import} \PY{n+nn}{nltk}\PY{o}{,} \PY{n+nn}{re}\PY{o}{,} \PY{n+nn}{pprint}
+          \PY{k+kn}{from} \PY{n+nn}{nltk} \PY{k+kn}{import} \PY{n}{word\PYZus{}tokenize}
+          
+          \PY{k+kn}{from} \PY{n+nn}{nltk.stem} \PY{k+kn}{import} \PY{n}{WordNetLemmatizer}
+          \PY{n}{wnl} \PY{o}{=} \PY{n}{WordNetLemmatizer}\PY{p}{(}\PY{p}{)}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.corpus} \PY{k+kn}{import} \PY{n}{wordnet} \PY{k}{as} \PY{n}{wn}
+          \PY{k+kn}{from} \PY{n+nn}{difflib} \PY{k+kn}{import} \PY{n}{get\PYZus{}close\PYZus{}matches} \PY{k}{as} \PY{n}{gcm}
+          \PY{k+kn}{from} \PY{n+nn}{gensim.models.word2vec} \PY{k+kn}{import} \PY{n}{Word2Vec}
+          \PY{k+kn}{from} \PY{n+nn}{pyemd} \PY{k+kn}{import} \PY{n}{emd}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+          \PY{k+kn}{import} \PY{n+nn}{math}
+          \PY{k+kn}{from} \PY{n+nn}{parse} \PY{k+kn}{import} \PY{o}{*}
+          \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{o}{*}
+          \PY{c}{\PYZsh{}init\PYZus{}printing(use\PYZus{}unicode=True)}
+          \PY{k+kn}{from} \PY{n+nn}{funcy} \PY{k+kn}{import} \PY{o}{*}
+          \PY{k+kn}{import} \PY{n+nn}{urllib2}
+          
+          \PY{k+kn}{import} \PY{n+nn}{os}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.parse} \PY{k+kn}{import} \PY{n}{stanford}
+          \PY{k+kn}{import} \PY{n+nn}{pydot}
+          \PY{k+kn}{from} \PY{n+nn}{nltk.stem.wordnet} \PY{k+kn}{import} \PY{n}{WordNetLemmatizer}
+          
+          \PY{k+kn}{from} \PY{n+nn}{scipy.stats} \PY{k+kn}{import} \PY{n}{mode}
+          
+          \PY{k+kn}{import} \PY{n+nn}{enchant}
+          \PY{n}{d} \PY{o}{=} \PY{n}{enchant}\PY{o}{.}\PY{n}{Dict}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{en\PYZus{}US}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    SAT Math score equivalencies 54 = 800 48 = 700 40 = 630 32 = 560 25 =
+500 20 = 460 15 = 420 10 = 370 5 = 310 0 = 220
+
+    First, we will load in some sample questions (the entirety of the math
+sections from two past SAT tests). The questions are loaded into the
+list ``questions'', and depending on what questions we wish to work with
+we'll load a different set of questions.
+
+    \section{Sample Test 1 (Math Section)}\label{sample-test-1-math-section}
+
+Questions are formatted in the form (Section, Question \#, Question
+Text, Answer Choices, Correct Answer)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}136}]:} \PY{c}{\PYZsh{} First Test}
+          \PY{n}{questions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If 10 + x is 5 more than 10, what is the value of 2x?}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The result when a number is divided by 2 is equal to the result when that same number is }
+          \PY{l+s}{divided by 4. What is that number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{TABLE}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{CHART}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If n and k are positive integers and 8\PYZca{}n = 2\PYZca{}k, what is the value of n/k?}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{In a certain store, the regular price of a refrigerator is \PYZdl{}600. }
+          \PY{l+s}{How much money is saved by buying this refrigerator}
+          \PY{l+s}{at 20 percent off the regular price rather than}
+          \PY{l+s}{buying it on sale at 10 percent off the regular price}
+          \PY{l+s}{with an additional discount of 10 percent off the sale}
+          \PY{l+s}{price?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}6}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}12}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}24}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}54}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}60}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If the function f is defined by f(x) = 3*x + 4, then 2*f(x)+4 = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}
+                            \PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{5*x + 4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5*x + 8}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6*x + 4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6*x + 8}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6*x + 12}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{What is the greatest possible area of a triangle with one side of length 7 and another side of }
+          \PY{l+s}{                          length 10?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}
+                            \PY{p}{,} \PY{p}{[}\PY{l+m+mi}{17}\PY{p}{,} \PY{l+m+mi}{34}\PY{p}{,} \PY{l+m+mi}{35}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{140}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{A total of 120,000 votes were cast for 2 opposing}
+          \PY{l+s}{candidates, Garcia and Perez. If Garcia won by a ratio}
+          \PY{l+s}{of 5 to 3, what was the number of votes cast for Perez?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{15000}\PY{p}{,} \PY{l+m+mi}{30000}\PY{p}{,} \PY{l+m+mi}{45000}\PY{p}{,} \PY{l+m+mi}{75000}\PY{p}{,} \PY{l+m+mi}{80000}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If a positive integer n is picked at random from the}
+          \PY{l+s}{positive integers less than or equal to 10, what is the}
+          \PY{l+s}{probability that 5n + 3 \PYZlt{}= 14?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{3}\PY{o}{/}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If t is a number greater than 1, then t\PYZca{}2 is how much}
+          \PY{l+s}{greater than t?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t * (t\PYZhy{}1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(t\PYZhy{}1) * (t+1)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The height of a right circular cylinder is 5 and the}
+          \PY{l+s}{diameter of its base is 4. What is the distance from the}
+          \PY{l+s}{center of one base to a point on the circumference of}
+          \PY{l+s}{the other base?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{29}\PY{p}{)}\PY{p}{,} \PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{33}\PY{p}{)}\PY{p}{,} \PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{41}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If p and n are integers such that p \PYZgt{} n \PYZgt{} 0 and}
+          \PY{l+s}{p\PYZca{}2 \PYZhy{} n\PYZca{}2 = 12, which of the following can be the}
+          \PY{l+s}{value of p \PYZhy{} n?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x and y are positive integers, which of the}
+          \PY{l+s}{following is equivalent to (2x)\PYZca{}(3y) \PYZhy{} (2x)\PYZca{}y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{(2x)\PYZca{}(2y)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(2\PYZca{}y)(x\PYZca{}3 \PYZhy{} x\PYZca{}y)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{((2x)\PYZca{}y)((2x)\PYZca{}(2y) \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                                                              \PY{l+s}{\PYZdq{}}\PY{l+s}{((2x)\PYZca{}y)((4x)\PYZca{}y \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{((2x)\PYZca{}y)((2x)\PYZca{}3 \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If j, k, and n are consecutive integers such that}
+          \PY{l+s}{0 \PYZlt{} j \PYZlt{} k \PYZlt{} n and the units (ones) digit of the product}
+          \PY{l+s}{j * n is 9, what is the units digit of k?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
+          
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{4, 11, 18, . . . In the sequence above, the first term is 4 and each term}
+          \PY{l+s}{after the first is 7 more than the previous term. What is}
+          \PY{l+s}{the 12th term of the sequence?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{77}\PY{p}{,} \PY{l+m+mi}{81}\PY{p}{,} \PY{l+m+mi}{84}\PY{p}{,} \PY{l+m+mi}{86}\PY{p}{,} \PY{l+m+mi}{92}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If  (x\PYZhy{}2)\PYZca{}2 = 49, then x could be}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{9}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The average (arithmetic mean) of t and y is 15, and}
+          \PY{l+s}{the average of w and x is 15. What is the average of}
+          \PY{l+s}{t, w, x, and y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{7.5}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mf}{22.5}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{All of Kay’s brothers can swim. If the statement above is true, which of the following}
+          \PY{l+s}{must also be true?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{If Fred cannot swim, then he is not Kay’s brother.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If Dave can swim, then he is not Kay’s brother.}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                                  \PY{l+s}{\PYZdq{}}\PY{l+s}{If Walt can swim, then he is Kay’s brother.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If Pete is Kay’s brother, then he cannot swim.}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                                  \PY{l+s}{\PYZdq{}}\PY{l+s}{If Mark is not Kay’s brother, then he cannot swim.}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Each of the following is equivalent to (a/b)*(b*c + k) EXCEPT}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{a*((c+k)/b)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{a*(c + (k/b))}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                                                                                                    \PY{l+s}{\PYZdq{}}\PY{l+s}{(a/b)*(k + b*c)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{a*c + (a*k)/b}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(a*b*c + a*k)/b}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{When her son’s class held its magazine drive,}
+          \PY{l+s}{Dr. Nelson bought 7 one\PYZhy{}year magazine subscriptions}
+          \PY{l+s}{for the waiting room in her office. She bought}
+          \PY{l+s}{4 subscriptions that have 12 issues per year, 2}
+          \PY{l+s}{subscriptions that have 4 issues per year, and 1}
+          \PY{l+s}{subscription that has 52 issues per year. Altogether,}
+          \PY{l+s}{how many magazines will her office receive from these}
+          \PY{l+s}{subscriptions?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Three more than twice a number is equal to 4.}
+          \PY{l+s}{What is the number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{TABLE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If j/k = 32 and k = 3/2, what is the value of (1/2) * j}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{x+y+3*z = 600  x+y+z = 400  In the system of equations above,}
+          \PY{l+s}{what is the value of x+y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{There are 25 trays on a table in the cafeteria. Each tray}
+          \PY{l+s}{contains a cup only, a plate only, or both a cup and a}
+          \PY{l+s}{plate. If 15 of the trays contain cups and 21 of the trays}
+          \PY{l+s}{contain plates, how many contain both a cup and a}
+          \PY{l+s}{plate?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 6 \PYZlt{} abs(x\PYZhy{}3) \PYZlt{} 7 and x \PYZlt{} 0, what is one possible value of abs(x)?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{What is the product of the smallest prime number that}
+          \PY{l+s}{is greater than 50 and the greatest prime number that is}
+          \PY{l+s}{less than 50?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{On Wednesday Heather ran 3 miles in 30 minutes.}
+          \PY{l+s}{If she ran for 45 minutes at this rate on Thursday,}
+          \PY{l+s}{how far did Heather run on Thursday?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{3.5 miles}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4 miles}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4.5 miles}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5 miles}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5.5 miles}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If (2*m)*k = 6, then m*k = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 3 times a number is equal to 3/2, what is the number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{10, 18, 4, 15, 3, 21, x  If x is the median of the 7 numbers listed above,}
+          \PY{l+s}{which of the following could be the value of x?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{16}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Two spheres, one with radius 7 and one with radius 4,}
+          \PY{l+s}{are tangent to each other. If P is any point on one}
+          \PY{l+s}{sphere and Q is any point on the other sphere, what is}
+          \PY{l+s}{the maximum possible length of PQ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{22}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{TABLE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{A student was given a piece of rope and told to cut}
+          \PY{l+s}{it into two equal pieces, keep one piece, and pass}
+          \PY{l+s}{the other piece to the next student. Each student was}
+          \PY{l+s}{to repeat this process until every student in the class}
+          \PY{l+s}{had exactly one piece of rope. Which of the following}
+          \PY{l+s}{could be the fraction of the original rope that one of}
+          \PY{l+s}{the students had?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{17}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{18}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x and y are integers, 7 \PYZlt{} y \PYZlt{} 16, and x/y = 2/5, how many possible values are there for x?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{GRAPH}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{SYMBOLS}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \section{Sample Test 2 (Math Section)}\label{sample-test-2-math-section}
+
+Questions are formatted in the form (Section, Question \#, Question
+Text, Answer Choices, Correct Answer)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}134}]:} \PY{c}{\PYZsh{} Second Test}
+          \PY{n}{questions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{When 70000 is written as 10 * 10\PYZca{}n, what is the value of n?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{On a car trip Sam drove m miles, Kara drove twice as}
+          \PY{l+s}{many miles as Sam, and Darin drove 20 fewer miles}
+          \PY{l+s}{than Kara. In terms of m, how many miles did Darin}
+          \PY{l+s}{drive?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{2*m+20}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2*m \PYZhy{} 20}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{m/2 +20}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(m+20)/2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{m/2 \PYZhy{} 20}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x and y are positive integers, what are all the solutions (x,y) of the equation 3*x + 2*y = 11}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,}
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{(1,4)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(3,1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(2,2)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{A company’s profit, P, in dollars, for producing}
+          \PY{l+s}{x machines in one day is given by P = 500x \PYZhy{} 20x\PYZca{}2.}
+          \PY{l+s}{If the company produces 10 machines in one day, then,}
+          \PY{l+s}{according to this formula, what is the profit for that}
+          \PY{l+s}{day?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5000}\PY{p}{,} \PY{l+m+mi}{4000}\PY{p}{,} \PY{l+m+mi}{3000}\PY{p}{,} \PY{l+m+mi}{2000}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{12\PYZhy{}n, 12, 12+n   What is the average (arithmetic mean) of the 3 quantities in the list above?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{12}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{18}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4+(n/3)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{12 + (n/3)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{A fruit salad is made from pineapples, pears, and}
+          \PY{l+s}{peaches mixed in the ratio of 2 to 3 to 5, respectively,}
+          \PY{l+s}{by weight. What fraction of the mixture by weight is}
+          \PY{l+s}{pineapple?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{3}\PY{o}{/}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If P and Q are two sets of numbers, and if every}
+          \PY{l+s}{number in P is also in Q, which of the following}
+          \PY{l+s}{CANNOT be true?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{4 is in both P and Q.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5 is in neither P nor Q.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6 is in P, but not in Q.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{7 is in Q, but not in P.}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                               \PY{l+s}{\PYZdq{}}\PY{l+s}{If 8 is not in Q, then 8 is not in P.}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{What is the maximum number of rectangular blocks}
+          \PY{l+s}{measuring 3 inches by 2 inches by 1 inch that can be}
+          \PY{l+s}{packed into a cube\PYZhy{}shaped box whose interior measures}
+          \PY{l+s}{6 inches on an edge?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{24}\PY{p}{,}\PY{l+m+mi}{28}\PY{p}{,}\PY{l+m+mi}{30}\PY{p}{,}\PY{l+m+mi}{36}\PY{p}{,}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If a!=0 and (5/x) = (5+a)/(x+a), what is the value of x?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{DIAGRAM}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{3*x + 2*y + 2*z = 19   3*x + y +z = 14   If the equations above are true, which of the following is the value of y+z?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{A boat costs x dollars, and this cost is to be shared}
+          \PY{l+s}{equally by a group of people. In terms of x, how many}
+          \PY{l+s}{dollars less will each person contribute if there are}
+          \PY{l+s}{4 people in the group instead of 3 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{x/12}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x/4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x/3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{7x/12}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{7x}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If y = 2*x + 3 and x \PYZlt{} 2, which of the following}
+          \PY{l+s}{represents all the possible values for y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZlt{} 7}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZgt{} 7}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZlt{} 5}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZgt{} 5}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5\PYZlt{} y \PYZlt{} 7}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{GRAPH}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{GRAPH}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{SYMBOL}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x + k = 12 and p(x + k) = 36, what is the value}
+          \PY{l+s}{of p?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 13 is added to one\PYZhy{}half of a certain number, the}
+          \PY{l+s}{result is 37. What is the original number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{24}\PY{p}{,}\PY{l+m+mi}{40}\PY{p}{,}\PY{l+m+mi}{48}\PY{p}{,}\PY{l+m+mi}{61}\PY{p}{,}\PY{l+m+mi}{80}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{TABLE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The least and greatest numbers in a list of 7 real}
+          \PY{l+s}{numbers are 2 and 20, respectively. The median of the}
+          \PY{l+s}{list is 6, and the number 3 occurs most often in the list.}
+          \PY{l+s}{Which of the following could be the average (arithmetic}
+          \PY{l+s}{mean) of the numbers in the list?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{7.5}\PY{p}{,} \PY{l+m+mf}{8.5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{In the xy\PYZhy{}coordinate plane, how many points are a}
+          \PY{l+s}{distance of 4 units from the origin?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{One}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Two}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Three}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Four}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{More than four}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{TABLE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If a cake is cut into thirds and each third is cut into}
+          \PY{l+s}{fourths, how many pieces of cake are there?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If y = h/x where h is a constant, and if y = 3 when}
+          \PY{l+s}{x = 4, what does y equal when x = 6 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The price of a certain item was \PYZdl{}10 in 1990 and it}
+          \PY{l+s}{has gone up by \PYZdl{}2 per year since 1990. If this trend}
+          \PY{l+s}{continues, in what year will the price be \PYZdl{}100 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The number n is a 2\PYZhy{}digit number. When n is divided}
+          \PY{l+s}{by 10, the remainder is 9, and when n is divided by 9,}
+          \PY{l+s}{the remainder is 8. What is the value of n ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If j is chosen at random from the set \PYZob{}4, 5, 6\PYZcb{} and}
+          \PY{l+s}{k is chosen at random from the set \PYZob{}10, 11, 12\PYZcb{}, what}
+          \PY{l+s}{is the probability that the product of j and k is divisible}
+          \PY{l+s}{by 5 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Tom and Alison are both salespeople. Tom}\PY{l+s}{\PYZsq{}}\PY{l+s}{s weekly}
+          \PY{l+s}{compensation consists of \PYZdl{}300 plus 20 percent of his}
+          \PY{l+s}{sales. Alison}\PY{l+s}{\PYZsq{}}\PY{l+s}{s weekly compensation consists of \PYZdl{}200}
+          \PY{l+s}{plus 25 percent of her sales. If they both had the same}
+          \PY{l+s}{amount of sales and the same compensation for a}
+          \PY{l+s}{particular week, what was that compensation, in}
+          \PY{l+s}{dollars?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{t*x + 12*y = \PYZhy{}3   The equation above is the equation of a line in the}
+          \PY{l+s}{xy\PYZhy{}plane, and t is a constant. If the slope of the line}
+          \PY{l+s}{is \PYZhy{}10, what is the value of t ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If (1/3)*y + 9 = 0, then y = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{27}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{9}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{27}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Roy planted corn on 1/5}
+          \PY{l+s}{of his land. If he planted}
+          \PY{l+s}{45 acres of corn, how many acres of land does}
+          \PY{l+s}{he have?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mf}{112.5}\PY{p}{,} \PY{l+m+mi}{135}\PY{p}{,} \PY{l+m+mi}{225}\PY{p}{,} \PY{l+m+mf}{337.5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{6, 10, 18, 34, 66   The first number in the list above is 6. Which of the}
+          \PY{l+s}{following gives a rule for finding each successive}
+          \PY{l+s}{number in the list?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{Add 4 to the preceding number.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Take 1/2 of the preceding number and then add 7 to that result.}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                                   \PY{l+s}{\PYZdq{}}\PY{l+s}{Double the preceding number and then subtract 2 from that result.}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                                   \PY{l+s}{\PYZdq{}}\PY{l+s}{Subtract 2 from the preceding number and then double that result.}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                                   \PY{l+s}{\PYZdq{}}\PY{l+s}{Triple the preceding number and then subtract 8 from that result.}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If h and k are positive numbers and h+k = 7, then (7\PYZhy{}k)/h = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{1}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{0}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}1}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{h}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{h\PYZhy{}1}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{TABLE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x\PYZca{}2 = x + 6, which of the following must be true?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{x=6}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZlt{}3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZgt{}0}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZca{}2 \PYZlt{} x}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZca{}2 \PYZgt{} x}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Let the function f be defined by f(x) = 5*x \PYZhy{} 2*a,}
+          \PY{l+s}{where a is a constant. If f(10) + f(5) = 55, what}
+          \PY{l+s}{is the value of a ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{A number is called “even\PYZhy{}odd” if it is halfway between}
+          \PY{l+s}{an even integer and an odd integer. If x is an even\PYZhy{}odd}
+          \PY{l+s}{number, which of the following must be true?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{2*x is an integer}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2*x is even\PYZhy{}odd}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x is halfway between two even integers}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} 
+                            \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If m is a positive integer, which of the following is NOT equal to (2\PYZca{}4)\PYZca{}m?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{2\PYZca{}(4m)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4\PYZca{}(2m)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(2\PYZca{}m)*(2\PYZca{}(3m))}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(4\PYZca{}m)*(2\PYZca{}m)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{16\PYZca{}m}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{FIGURE}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{How many different ordered pairs (x, y) are there such}
+          \PY{l+s}{that x is an even integer, where 4 \PYZlt{}= x \PYZlt{}= 10, and y is}
+          \PY{l+s}{an integer, where 4 \PYZlt{} y \PYZlt{} 10 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{30}\PY{p}{,}\PY{l+m+mi}{36}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{n(t) = 500*(0.81)\PYZca{}t   The function above can be used to model the}
+          \PY{l+s}{population of a certain endangered species of}
+          \PY{l+s}{animal. If n(t) gives the number of the species}
+          \PY{l+s}{living t decades after the year 1900, which of the}
+          \PY{l+s}{following is true about the population of the species}
+          \PY{l+s}{from 1900 to 1920 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{It increased by about 1,000.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{It increased by about 320.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{It decreased by about 180.}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                                   \PY{l+s}{\PYZdq{}}\PY{l+s}{It decreased by about 320.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{It decreased by about 1,000.}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{A sphere of radius r inside a cube touches each one}
+          \PY{l+s}{of the six sides of the cube. What is the volume of the}
+          \PY{l+s}{cube, in terms of r ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{r\PYZca{}3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2*r\PYZca{}3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4*r\PYZca{}3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(4/3)*pi*(r\PYZca{}3)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{8*r\PYZca{}3}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    Also included a blank test, to speed up entering future tests.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c}{\PYZsh{} Blank Test}
+        \PY{n}{questions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        
+        
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c}{\PYZsh{} Total number of math questions on this test}
+        \PY{n+nb}{len}\PY{p}{(}\PY{n}{questions}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 54
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}137}]:} \PY{c}{\PYZsh{} Get rid of all problems that have a chart, figure, or special symbols}
+          \PY{n}{not\PYZus{}figures} \PY{o}{=} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{questions} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{nltk}\PY{o}{.}\PY{n}{word\PYZus{}tokenize}\PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{]}
+          
+          \PY{c}{\PYZsh{} Convert to lists}
+          \PY{n}{cleaned} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{not\PYZus{}figures}\PY{p}{:}
+              \PY{n}{out} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{bit} \PY{o+ow}{in} \PY{n}{item}\PY{p}{:}
+                  \PY{n}{out}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{bit}\PY{p}{)}
+              \PY{n}{cleaned}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{out}\PY{p}{)}
+              
+          \PY{c}{\PYZsh{} Get rid of newlines }
+          \PY{n}{cleaned2} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{cleaned}\PY{p}{:}
+              \PY{n}{item}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{n}{item}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{cleaned2}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{item}\PY{p}{)}
+          
+          \PY{n}{clean\PYZus{}questions} \PY{o}{=} \PY{n}{cleaned2}
+              
+          \PY{c}{\PYZsh{} Number of remaining questions}
+          \PY{n+nb}{len}\PY{p}{(}\PY{n}{clean\PYZus{}questions}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}137}]:} 32
+\end{Verbatim}
+        
+    We're using a library, sympy, to handle algebraic equation processing.
+This function converts a ``SAT form'' equation into a form that sympy
+can import.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}179}]:} \PY{c}{\PYZsh{} Parses a standard form equation into sympy form. Returns a list, as 1 \PYZlt{} x \PYZlt{} 2 is split into two equations}
+          \PY{k}{def} \PY{n+nf}{my\PYZus{}sympify}\PY{p}{(}\PY{n}{equation}\PY{p}{)}\PY{p}{:}
+              \PY{n}{split} \PY{o}{=} \PY{n}{equation}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{=}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{split}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+                  \PY{n}{equation} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{Equality(}\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{, }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{)}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{split}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{split}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+          
+              \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{s*(\PYZlt{}|\PYZgt{})}\PY{l+s}{\PYZbs{}}\PY{l+s}{s*}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{equation}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}
+                  \PY{n}{pieces} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{s*(\PYZlt{}|\PYZgt{})}\PY{l+s}{\PYZbs{}}\PY{l+s}{s*}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{equation}\PY{p}{)}
+                  \PY{n}{eqn1} \PY{o}{=} \PY{n}{sympify}\PY{p}{(}\PY{n}{pieces}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{+} \PY{n}{pieces}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{n}{pieces}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+                  \PY{n}{eqn2} \PY{o}{=} \PY{n}{sympify}\PY{p}{(}\PY{n}{pieces}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{+} \PY{n}{pieces}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{+} \PY{n}{pieces}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}
+                  \PY{k}{return} \PY{p}{[}\PY{n}{eqn1}\PY{p}{,} \PY{n}{eqn2}\PY{p}{]}
+              
+              \PY{k}{return} \PY{p}{[}\PY{n}{sympify}\PY{p}{(}\PY{n}{equation}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+    Now, we want to try to handle some subset of the questions. First, we
+note that some questions can be considered pure-math - ie, they require
+no knowledge other than an understanding of English and Math to solve.
+
+    Then, we categorize this subset based on difficulty level:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Straightforward
+\item
+  Easy math, hard to extract equations
+\item
+  Easy to get equations, but hard math
+\item
+  Hard both in langauge and math
+\item
+  Unique in some way
+\end{enumerate}
+
+Categories are noted in a comment above each question.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}150}]:} \PY{c}{\PYZsh{} Want to look only at the \PYZdq{}pure\PYZhy{}algebra\PYZdq{} math problems.}
+          \PY{n}{questions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If 10 + x is 5 more than 10, what is the value of 2x?}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The result when a number is divided by 2 is equal to the result when that same number is }
+          \PY{l+s}{divided by 4. What is that number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If n and k are positive integers and 8\PYZca{}n = 2\PYZca{}k, what is the value of n/k?}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 5}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If the function f is defined by f(x) = 3*x + 4, then 2*f(x)+4 = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}
+                            \PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{5*x + 4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5*x + 8}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6*x + 4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6*x + 8}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6*x + 12}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 5}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If a positive integer n is picked at random from the}
+          \PY{l+s}{positive integers less than or equal to 10, what is the }
+          \PY{l+s}{probability that 5n + 3 \PYZlt{}= 14?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{3}\PY{o}{/}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If t is a number greater than 1, then t\PYZca{}2 is how much}
+          \PY{l+s}{greater than t?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t * (t\PYZhy{}1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(t\PYZhy{}1) * (t+1)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If p and n are integers such that p \PYZgt{} n \PYZgt{} 0 and}
+          \PY{l+s}{p\PYZca{}2 \PYZhy{} n\PYZca{}2 = 12, which of the following can be the value of p \PYZhy{} n?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x and y are positive integers, which of the}
+          \PY{l+s}{following is equivalent to (2x)\PYZca{}(3y) \PYZhy{} (2x)\PYZca{}y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{(2x)\PYZca{}(2y)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(2\PYZca{}y)(x\PYZca{}3 \PYZhy{} x\PYZca{}y)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{((2x)\PYZca{}y)((2x)\PYZca{}(2y) \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                                                              \PY{l+s}{\PYZdq{}}\PY{l+s}{((2x)\PYZca{}y)((4x)\PYZca{}y \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{((2x)\PYZca{}y)((2x)\PYZca{}3 \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 5}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If j, k, and n are consecutive integers such that}
+          \PY{l+s}{0 \PYZlt{} j \PYZlt{} k \PYZlt{} n and the units (ones) digit of the product}
+          \PY{l+s}{j * n is 9, what is the units digit of k?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If (x\PYZhy{}2)\PYZca{}2 = 49, then x could be}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{9}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 5}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The average (arithmetic mean) of t and y is 15, and}
+          \PY{l+s}{the average of w and x is 15. What is the average of}
+          \PY{l+s}{t, w, x, and y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{7.5}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mf}{22.5}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Each of the following is equivalent to (a/b)*(b*c + k) EXCEPT}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{a*((c+k)/b)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{a*(c + (k/b))}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(a/b)*(k + b*c)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{a*c + (a*k)/b}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(a*b*c + a*k)/b}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Three more than twice a number is equal to 4.}
+          \PY{l+s}{What is the number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If j/k = 32 and k = 3/2, what is the value of (1/2) * j}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{x+y+3*z = 600  x+y+z = 400  In the system of equations above,}
+          \PY{l+s}{what is the value of x+y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 6 \PYZlt{} abs(x\PYZhy{}3) \PYZlt{} 7 and x \PYZlt{} 0, what is one possible value of abs(x)?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 5}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{What is the product of the smallest prime number that}
+          \PY{l+s}{is greater than 50 and the greatest prime number that is}
+          \PY{l+s}{less than 50?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If (2*m)*k = 6, then m*k = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 3 times a number is equal to 3/2, what is the number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 5}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{10, 18, 4, 15, 3, 21, x  If x is the median of the 7 numbers listed above,}
+          \PY{l+s}{which of the following could be the value of x?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{16}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 5}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x and y are integers, 7 \PYZlt{} y \PYZlt{} 16, and x/y = 2/5, how many possible values are there for x?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} second test}
+          
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{When 70000 is written as 10 * 10\PYZca{}n, what is the value of n?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x and y are positive integers, what are all the solutions (x,y) of the equation 3*x + 2*y = 11}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{(1,4)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(3,1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(2,2)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{12\PYZhy{}n, 12, 12+n   What is the average (arithmetic mean) of the 3 quantities in the list above?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{12}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{18}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4+(n/3)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{12 + (n/3)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If P and Q are two sets of numbers, and if every}
+          \PY{l+s}{number in P is also in Q, which of the following}
+          \PY{l+s}{CANNOT be true?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{4 is in both P and Q.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5 is in neither P nor Q.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6 is in P, but not in Q.}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{7 is in Q, but not in P.}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                               \PY{l+s}{\PYZdq{}}\PY{l+s}{If 8 is not in Q, then 8 is not in P.}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If a!=0 and (5/x) = (5+a)/(x+a), what is the value of x?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{3*x + 2*y + 2*z = 19   3*x + y +z = 14   If the equations above are true, which of the following is the value of y+z?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If y = 2*x + 3 and x \PYZlt{} 2, which of the following}
+          \PY{l+s}{represents all the possible values for y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZlt{} 7}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZgt{} 7}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZlt{} 5}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{y \PYZgt{} 5}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5\PYZlt{} y \PYZlt{} 7}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x + k = 12 and p(x + k) = 36, what is the value}
+          \PY{l+s}{of p?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 13 is added to one\PYZhy{}half of a certain number, the}
+          \PY{l+s}{result is 37. What is the original number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{24}\PY{p}{,}\PY{l+m+mi}{40}\PY{p}{,}\PY{l+m+mi}{48}\PY{p}{,}\PY{l+m+mi}{61}\PY{p}{,}\PY{l+m+mi}{80}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The least and greatest numbers in a list of 7 real}
+          \PY{l+s}{numbers are 2 and 20, respectively. The median of the}
+          \PY{l+s}{list is 6, and the number 3 occurs most often in the list.}
+          \PY{l+s}{Which of the following could be the average (arithmetic}
+          \PY{l+s}{mean) of the numbers in the list?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{7.5}\PY{p}{,} \PY{l+m+mf}{8.5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If y = h/x where h is a constant, and if y = 3 when}
+          \PY{l+s}{x = 4, what does y equal when x = 6 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The number n is a 2\PYZhy{}digit number. When n is divided}
+          \PY{l+s}{by 10, the remainder is 9, and when n is divided by 9,}
+          \PY{l+s}{the remainder is 8. What is the value of n ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If j is chosen at random from the set \PYZob{}4, 5, 6\PYZcb{} and}
+          \PY{l+s}{k is chosen at random from the set \PYZob{}10, 11, 12\PYZcb{}, what}
+          \PY{l+s}{is the probability that the product of j and k is divisible}
+          \PY{l+s}{by 5 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If (1/3)*y + 9 = 0, then y = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{27}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{9}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{27}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If h and k are positive numbers and h+k = 7, then (7\PYZhy{}k)/h = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{1}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{0}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}1}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{h}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{h\PYZhy{}1}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x\PYZca{}2 = x + 6, which of the following must be true?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{x=6}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZlt{}3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZgt{}0}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZca{}2 \PYZlt{} x}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x\PYZca{}2 \PYZgt{} x}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Let the function f be defined by f(x) = 5*x \PYZhy{} 2*a,}
+          \PY{l+s}{where a is a constant. If f(10) + f(5) = 55, what}
+          \PY{l+s}{is the value of a ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If m is a positive integer, which of the following is NOT equal to (2\PYZca{}4)\PYZca{}m?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{2\PYZca{}(4m)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4\PYZca{}(2m)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(2\PYZca{}m)*(2\PYZca{}(3m))}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(4\PYZca{}m)*(2\PYZca{}m)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{16\PYZca{}m}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{How many different ordered pairs (x, y) are there such}
+          \PY{l+s}{that x is an even integer, where 4 \PYZlt{}= x \PYZlt{}= 10, and y is}
+          \PY{l+s}{an integer, where 4 \PYZlt{} y \PYZlt{} 10 ?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{30}\PY{p}{,}\PY{l+m+mi}{36}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    Okay, let's go through this one piece at a time, and tackle the ``1''
+category first.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}167}]:} \PY{c}{\PYZsh{} Now we grab just the \PYZdq{}1\PYZdq{} category}
+          \PY{n}{questions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If n and k are positive integers and 8\PYZca{}n = 2\PYZca{}k, what is the value of n/k?}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If p and n are integers such that p \PYZgt{} n \PYZgt{} 0 and}
+          \PY{l+s}{p\PYZca{}2 \PYZhy{} n\PYZca{}2 = 12, which of the following can be the value of p \PYZhy{} n?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{POSSIBLY MULTIPLE ANSWERS}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If x and y are positive integers, which of the}
+          \PY{l+s}{following is equivalent to (2*x)\PYZca{}(3*y) \PYZhy{} (2*x)\PYZca{}y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{(2*x)\PYZca{}(2*y)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(2\PYZca{}y)(x\PYZca{}3 \PYZhy{} x\PYZca{}y)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{((2*x)\PYZca{}y)((2*x)\PYZca{}(2*y) \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                                                              \PY{l+s}{\PYZdq{}}\PY{l+s}{((2*x)\PYZca{}y)((4*x)\PYZca{}y \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{((2*x)\PYZca{}y)((2*x)\PYZca{}3 \PYZhy{} 1)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If (x\PYZhy{}2)\PYZca{}2 = 49, then x could be}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{9}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Each of the following is equivalent to (a/b)*(b*c + k) EXCEPT}\PY{l+s}{\PYZdq{}}\PY{p}{,} 
+                            \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{a*((c+k)/b)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{a*(c + (k/b))}\PY{l+s}{\PYZdq{}}\PY{p}{,}  \PY{l+s}{\PYZdq{}}\PY{l+s}{(a/b)*(k + b*c)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{a*c + (a*k)/b}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(a*b*c + a*k)/b}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If j/k = 32 and k = 3/2, what is the value of (1/2) * j}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{x+y+3*z = 600  x+y+z = 400  In the system of equations above,}
+          \PY{l+s}{what is the value of x+y?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 6 \PYZlt{} abs(x\PYZhy{}3) \PYZlt{} 7 and x \PYZlt{} 0, what is one possible value of abs(x)?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 1}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If (2*m)*k = 6, then m*k = }\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}156}]:} \PY{c}{\PYZsh{} Here, we define standard sets of characters to use for filtering}
+          \PY{n}{letters} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{a}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{b}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{c}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{d}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{e}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{f}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{g}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{h}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{i}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{j}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{k}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{l}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{m}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{n}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{o}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{p}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{q}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{s}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{t}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{u}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{v}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{w}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{x}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{y}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{z}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                    \PY{l+s}{\PYZdq{}}\PY{l+s}{A}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{B}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{C}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{D}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{E}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{F}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{G}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{H}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{I}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{J}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{K}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{L}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{M}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{N}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{O}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{P}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{Q}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{R}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{S}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{T}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{U}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{V}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{W}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{X}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{Y}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{Z}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+          \PY{n}{math\PYZus{}symbols} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{/}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{=}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{*}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{+}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZca{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZlt{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZgt{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{!}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+          \PY{n}{numbers} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{0}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{3}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{7}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{8}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{9}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+\end{Verbatim}
+
+    In this set of ``pure math'' questions, I'm curious how many unique
+words there are in these types of questions. The following block of code
+essentially counts the number of times each words appears in the
+question set, and counts the total number of words. Turns out there's
+only 150 unique words in the pure-math questions on 2 tests.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}151}]:} \PY{k+kn}{import} \PY{n+nn}{re}
+          \PY{k+kn}{import} \PY{n+nn}{operator}
+          \PY{n}{sentences} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{n}{cleaned} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{k}{for} \PY{n}{question} \PY{o+ow}{in} \PY{n}{questions}\PY{p}{:}
+              \PY{n}{sentences}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{question}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+          \PY{k}{for} \PY{n}{sentence} \PY{o+ow}{in} \PY{n}{sentences}\PY{p}{:} 
+              \PY{n}{sentence} \PY{o}{=} \PY{n}{sentence}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{sentence} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{[\PYZhy{}/\PYZhy{}=*+()\PYZca{}\PYZlt{}\PYZgt{}!,\PYZob{}\PYZcb{}?.]}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{sentence}\PY{p}{)}
+              \PY{c}{\PYZsh{}sentence = re.sub(\PYZsq{}[xyzhmk]\PYZsq{}, \PYZdq{}\PYZdq{}, sentence)}
+              \PY{n}{sentence} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{[123456789]}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{sentence}\PY{p}{)}
+              
+              \PY{n}{cleaned}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{sentence}\PY{p}{)}
+          
+          \PY{n}{words} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{k}{for} \PY{n}{sentence} \PY{o+ow}{in} \PY{n}{cleaned}\PY{p}{:}
+              \PY{n}{temp} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{sentence}\PY{p}{)}
+              \PY{n}{words} \PY{o}{+}\PY{o}{=} \PY{n}{temp}
+          
+          \PY{n}{words2} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{k}{for} \PY{n}{word} \PY{o+ow}{in} \PY{n}{words}\PY{p}{:}
+              \PY{k}{try}\PY{p}{:}
+                  \PY{n}{temp} \PY{o}{=} \PY{n}{WordNetLemmatizer}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{lemmatize}\PY{p}{(}\PY{n}{word}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+                  \PY{k}{if} \PY{n}{d}\PY{o}{.}\PY{n}{check}\PY{p}{(}\PY{n}{temp}\PY{p}{)}\PY{p}{:}
+                      \PY{n}{words2}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{temp}\PY{p}{)}
+              \PY{k}{except}\PY{p}{:}
+                  \PY{k}{pass}
+          \PY{n}{my\PYZus{}words} \PY{o}{=} \PY{n}{defaultdict}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+          \PY{k}{for} \PY{n}{word} \PY{o+ow}{in} \PY{n}{words2}\PY{p}{:}
+              \PY{n}{my\PYZus{}words}\PY{p}{[}\PY{n}{word}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+          \PY{n}{sorted\PYZus{}x} \PY{o}{=} \PY{n+nb}{reversed}\PY{p}{(}\PY{n+nb}{sorted}\PY{p}{(}\PY{n}{my\PYZus{}words}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{n}{operator}\PY{o}{.}\PY{n}{itemgetter}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+          \PY{n}{sorted\PYZus{}x} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{sorted\PYZus{}x}\PY{p}{)}
+          \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{sorted\PYZus{}x}\PY{p}{:}
+              \PY{n}{item} \PY{o}{=} \PY{n}{item}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+              \PY{k}{print} \PY{n}{item}\PY{p}{,} \PY{n}{my\PYZus{}words}\PY{p}{[}\PY{n}{item}\PY{p}{]}
+          \PY{k}{print} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{words}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+the 66
+is 58
+of 39
+and 32
+if 31
+x 31
+number 22
+what 22
+y 19
+n 19
+a 16
+value 15
+are 13
+k 12
+integer 11
+following 10
+which 9
+that 9
+to 8
+when 7
+in 7
+than 7
+positive 7
+by 7
+be 7
+p 7
+j 6
+equal 6
+then 6
+average 5
+t 5
+list 5
+divided 4
+f 4
+above 4
+where 4
+such 3
+product 3
+arithmetic 3
+how 3
+at 3
+equation 3
+true 3
+from 3
+could 3
+result 3
+set 3
+mean 3
+possible 3
+greater 3
+digit 3
+random 3
+greatest 2
+q 2
+m 2
+an 2
+defined 2
+constant 2
+z 2
+function 2
+more 2
+there 2
+unit 2
+probability 2
+w 2
+many 2
+remainder 2
+equivalent 2
+for 2
+median 2
+h 2
+prime 2
+one 2
+chosen 2
+all 2
+quantity 1
+original 1
+time 1
+doe 1
+pair 1
+two 1
+most 1
+added 1
+same 1
+different 1
+certain 1
+can 1
+divisible 1
+must 1
+listed 1
+much 1
+least 1
+system 1
+ordered 1
+three 1
+or 1
+let 1
+respectively 1
+occurs 1
+consecutive 1
+smallest 1
+written 1
+even 1
+picked 1
+often 1
+each 1
+twice 1
+solution 1
+represents 1
+not 1
+every 1
+cannot 1
+real 1
+except 1
+also 1
+147
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+    Now, given what we just found, how many questions are made up only of a
+subset of those words? Ie, given a set of n words, how many questions
+are made up soely of those n words? Conclusion: although there's only
+150 words, you need most all of those to be able to handle most
+questions.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{top\PYZus{}words} \PY{o}{=} \PY{p}{[}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{sorted\PYZus{}x}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{]}
+         \PY{k}{print} \PY{n}{top\PYZus{}words}
+         
+         \PY{n}{bad} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{k}{for} \PY{n}{sentence} \PY{o+ow}{in} \PY{n}{cleaned}\PY{p}{:}
+             \PY{n}{temp} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{sentence}\PY{p}{)}
+             \PY{k}{for} \PY{n}{word} \PY{o+ow}{in} \PY{n}{temp}\PY{p}{:}
+                 \PY{k}{if} \PY{p}{(}\PY{n}{word}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{top\PYZus{}words}\PY{p}{)}\PY{p}{:}
+                     \PY{c}{\PYZsh{}print word.lower()}
+                     \PY{n}{bad} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                     \PY{c}{\PYZsh{}print sentence}
+                     \PY{k}{break}
+         \PY{k}{print} \PY{n}{bad}
+         \PY{k}{print} \PY{n+nb}{len}\PY{p}{(}\PY{n}{cleaned}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[]
+9
+9
+    \end{Verbatim}
+
+    Before doing this exercise, I was hoping that I could just manually
+write a language interpreter because of the small subset of language
+that is used in these problems. But, I think that even a 100-word
+interpreter with all grammar still used would be quite difficult..
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+    Okay, so if we're going to tackle algebra problems, we need a way to
+deal with algebra. The following functions build up some basic
+capabilities in this area.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}171}]:} \PY{c}{\PYZsh{} Substitutes the given substititutions in [(symbol, substitution)..] form into the given equation,}
+          \PY{c}{\PYZsh{} then checks if equation with substitutions is true. Also handles inequalities. }
+          \PY{k}{def} \PY{n+nf}{evaluate\PYZus{}equation}\PY{p}{(}\PY{n}{equation}\PY{p}{,} \PY{n}{substitutions}\PY{p}{)}\PY{p}{:}
+              
+              \PY{n}{lhs} \PY{o}{=} \PY{n}{equation}\PY{o}{.}\PY{n}{lhs}
+              \PY{n}{rhs} \PY{o}{=} \PY{n}{equation}\PY{o}{.}\PY{n}{rhs}
+              
+              \PY{k}{if} \PY{n+nb}{type}\PY{p}{(}\PY{n}{equation}\PY{p}{)} \PY{o}{==} \PY{n}{Equality}\PY{p}{:}
+                  \PY{k}{return} \PY{n}{simplify}\PY{p}{(}\PY{n}{lhs}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{substitutions}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{rhs}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{substitutions}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{0}
+              
+              \PY{k}{elif} \PY{n+nb}{type}\PY{p}{(}\PY{n}{equation}\PY{p}{)} \PY{o}{==} \PY{n}{StrictGreaterThan}\PY{p}{:}
+                  \PY{k}{return} \PY{n}{simplify}\PY{p}{(}\PY{n}{lhs}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{substitutions}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{rhs}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{substitutions}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}
+              
+              \PY{k}{elif} \PY{n+nb}{type}\PY{p}{(}\PY{n}{equation}\PY{p}{)} \PY{o}{==} \PY{n}{StrictLessThan}\PY{p}{:}
+                  \PY{k}{return} \PY{n}{simplify}\PY{p}{(}\PY{n}{lhs}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{substitutions}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{rhs}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{substitutions}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}
+\end{Verbatim}
+
+    It's surprisingly hard to write an automatic closed-form solver with
+sympy. Since nearly all SAT problems have integer or common-fraction
+solutions, we'll first write a simple numeric solver.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}202}]:} \PY{c}{\PYZsh{} Solves the given list of equations (given a solution form) and returns the desired result, if the solution }
+          \PY{c}{\PYZsh{} is in the range tested by this function.}
+          \PY{k}{def} \PY{n+nf}{numerical\PYZus{}solve\PYZus{}equations}\PY{p}{(}\PY{n}{equations}\PY{p}{,} \PY{n}{solution\PYZus{}form}\PY{p}{)}\PY{p}{:}
+              \PY{n}{integers} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+          
+              \PY{n}{symbols} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations}\PY{p}{:}
+                  \PY{n}{symbols} \PY{o}{+}\PY{o}{=} \PY{n}{equation}\PY{o}{.}\PY{n}{free\PYZus{}symbols}
+              \PY{n}{symbols} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{symbols}\PY{p}{)}\PY{p}{)}
+              
+              \PY{n}{variable\PYZus{}solutions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{n}{result\PYZus{}solutions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              
+              \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{symbols}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                  \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{no variables found in equations!}\PY{l+s}{\PYZdq{}}
+              \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{symbols}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                  \PY{n}{symbol} \PY{o}{=} \PY{n}{symbols}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                  \PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{n}{integers}\PY{p}{:}
+                      \PY{n}{all\PYZus{}true} \PY{o}{=} \PY{n+nb+bp}{True}
+                      \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations}\PY{p}{:}
+                          \PY{k}{if} \PY{o+ow}{not} \PY{n}{evaluate\PYZus{}equation}\PY{p}{(}\PY{n}{equation}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{n}{symbol}\PY{p}{,} \PY{n}{a}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+                              \PY{n}{all\PYZus{}true} \PY{o}{=} \PY{n+nb+bp}{False}
+                      \PY{k}{if} \PY{n}{all\PYZus{}true}\PY{p}{:}
+                          \PY{n}{variable\PYZus{}solutions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+                  
+                          \PY{k}{if} \PY{n+nb}{set}\PY{p}{(}\PY{n}{symbols}\PY{p}{)}\PY{o}{.}\PY{n}{issubset}\PY{p}{(}\PY{n}{solution\PYZus{}form}\PY{o}{.}\PY{n}{free\PYZus{}symbols}\PY{p}{)}\PY{p}{:}
+                              \PY{n}{result\PYZus{}solutions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{solution\PYZus{}form}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{symbol}\PY{p}{,} \PY{n}{a}\PY{p}{)}\PY{p}{)}
+                          \PY{k}{else}\PY{p}{:}
+                              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{solution form has symbol not in equations!}\PY{l+s}{\PYZdq{}}
+          
+                  \PY{k}{return} \PY{p}{(}\PY{n}{variable\PYZus{}solutions}\PY{p}{,} \PY{n}{result\PYZus{}solutions}\PY{p}{)}
+              
+              \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{symbols}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+                  \PY{n}{symbol1} \PY{o}{=} \PY{n}{symbols}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                  \PY{n}{symbol2} \PY{o}{=} \PY{n}{symbols}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+                  \PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{n}{integers}\PY{p}{:}
+                      \PY{k}{for} \PY{n}{b} \PY{o+ow}{in} \PY{n}{integers}\PY{p}{:}
+                          \PY{n}{all\PYZus{}true} \PY{o}{=} \PY{n+nb+bp}{True}
+                          \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations}\PY{p}{:}
+                              \PY{k}{if} \PY{o+ow}{not} \PY{n}{evaluate\PYZus{}equation}\PY{p}{(}\PY{n}{equation}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{n}{symbol1}\PY{p}{,} \PY{n}{a}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{n}{symbol2}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+                                  \PY{n}{all\PYZus{}true} \PY{o}{=} \PY{n+nb+bp}{False}
+                          \PY{k}{if} \PY{n}{all\PYZus{}true}\PY{p}{:}
+                              \PY{n}{variable\PYZus{}solutions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{)}
+                              \PY{k}{if} \PY{n+nb}{set}\PY{p}{(}\PY{n}{symbols}\PY{p}{)}\PY{o}{.}\PY{n}{issubset}\PY{p}{(}\PY{n}{solution\PYZus{}form}\PY{o}{.}\PY{n}{free\PYZus{}symbols}\PY{p}{)}\PY{p}{:}
+                                  \PY{n}{result\PYZus{}solutions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{solution\PYZus{}form}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{n}{symbol1}\PY{p}{,} \PY{n}{a}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{n}{symbol2}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+                              \PY{k}{else}\PY{p}{:}
+                                  \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{solution form has symbol not in equations!}\PY{l+s}{\PYZdq{}}
+          
+                  \PY{k}{return} \PY{p}{(}\PY{n}{variable\PYZus{}solutions}\PY{p}{,} \PY{n}{result\PYZus{}solutions}\PY{p}{)}
+              
+\end{Verbatim}
+
+    Then, once we have a solution (or solutions), we need to match it with
+the given solutions.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}235}]:} \PY{c}{\PYZsh{} Given a solution (or solutions), an a list of choices, return the index of the correct solution.}
+          \PY{k}{def} \PY{n+nf}{match\PYZus{}solution}\PY{p}{(}\PY{n}{solutions}\PY{p}{,} \PY{n}{choices}\PY{p}{)}\PY{p}{:}
+              \PY{n}{all\PYZus{}numeric} \PY{o}{=} \PY{n+nb+bp}{True}
+              \PY{k}{for} \PY{n}{choice} \PY{o+ow}{in} \PY{n}{choices}\PY{p}{:}
+                  \PY{k}{try}\PY{p}{:}
+                      \PY{n}{test} \PY{o}{=} \PY{n}{choice} \PY{o}{+} \PY{l+m+mi}{1}
+                  \PY{k}{except}\PY{p}{:}
+                      \PY{c}{\PYZsh{} All solutions aren\PYZsq{}t numeric!}
+                      \PY{n}{all\PYZus{}numeric} \PY{o}{=} \PY{n+nb+bp}{False}            
+              
+              \PY{n}{solutions} \PY{o}{=} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{solutions} \PY{k}{if} \PY{o+ow}{not} \PY{n}{math}\PY{o}{.}\PY{n}{isnan}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{]}
+              
+              \PY{c}{\PYZsh{} CHeck if there are multiple nearly identical solutions}
+              \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{solutions}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{5}\PY{p}{:}
+                  \PY{k}{if} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{solutions}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{mode}\PY{p}{(}\PY{n}{solutions}\PY{p}{)}\PY{o}{.}\PY{n}{mode}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{solutions}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{100}\PY{p}{:} \PY{c}{\PYZsh{} this might not work if solns are 0}
+                      \PY{c}{\PYZsh{} If so, collapse them to the average}
+                      \PY{n}{solutions} \PY{o}{=} \PY{p}{[}\PY{n}{mode}\PY{p}{(}\PY{n}{solutions}\PY{p}{)}\PY{o}{.}\PY{n}{mode}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}
+                      \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{collapsed solutions!}\PY{l+s}{\PYZdq{}}
+              
+              \PY{c}{\PYZsh{} If all solutions are numbers, match with choices}
+              \PY{k}{if} \PY{n}{all\PYZus{}numeric}\PY{p}{:}
+                  \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{solutions}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}          
+                      \PY{k}{for} \PY{n}{index}\PY{p}{,} \PY{n}{choice} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{choices}\PY{p}{)}\PY{p}{:}
+                          \PY{k}{if} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{solutions}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{choice}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{p}{(}\PY{n}{solutions}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{+} \PY{n}{choice}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{100}\PY{p}{:} 
+                              \PY{k}{return} \PY{n}{index}
+                          \PY{k}{if} \PY{n}{solutions}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{choice} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                              \PY{k}{return} \PY{n}{index}
+                  \PY{k}{else}\PY{p}{:}
+                      \PY{n}{solution\PYZus{}matches} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+                      \PY{k}{for} \PY{n}{solution} \PY{o+ow}{in} \PY{n}{solutions}\PY{p}{:}
+                          \PY{k}{if} \PY{n}{solution} \PY{o+ow}{in} \PY{n}{choices}\PY{p}{:}
+                              \PY{n}{solution\PYZus{}matches}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{solution}\PY{p}{)}
+                      \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{solution\PYZus{}matches}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                          \PY{k}{return} \PY{n}{choices}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{solution\PYZus{}matches}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    Okay, so we've got to extract equations from the question text. The
+following functions locate and return the equations from a question.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}174}]:} \PY{c}{\PYZsh{} A recursive function that finds all equations in a given string. }
+          \PY{k}{def} \PY{n+nf}{extract\PYZus{}equations\PYZus{}recursive}\PY{p}{(}\PY{n}{question}\PY{p}{,} \PY{n}{index}\PY{p}{,} \PY{n}{equations}\PY{p}{)}\PY{p}{:}
+              
+              \PY{k}{if} \PY{n}{index} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{question}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{return} \PY{p}{[}\PY{p}{]}
+          
+          
+              \PY{k}{if} \PY{n}{maybe\PYZus{}equation}\PY{p}{(}\PY{n}{question}\PY{p}{,} \PY{n}{index}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{done} \PY{o}{=} \PY{n+nb+bp}{False}
+                  \PY{n}{new\PYZus{}index} \PY{o}{=} \PY{n}{index}
+                  \PY{k}{while} \PY{o+ow}{not} \PY{n}{done}\PY{p}{:}
+                      \PY{n}{new\PYZus{}index} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                      \PY{k}{if} \PY{n}{new\PYZus{}index} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{question}\PY{p}{)}\PY{p}{:}
+                          \PY{k}{break}
+                      \PY{n}{done} \PY{o}{=} \PY{o+ow}{not} \PY{p}{(} \PY{n}{maybe\PYZus{}equation}\PY{p}{(}\PY{n}{question}\PY{p}{,} \PY{n}{new\PYZus{}index}\PY{p}{)} \PY{o+ow}{or} \PY{n}{question}\PY{p}{[}\PY{n}{new\PYZus{}index}\PY{p}{]} \PY{o}{==} \PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                     
+                  \PY{n}{equations} \PY{o}{=} \PY{n}{extract\PYZus{}equations\PYZus{}recursive}\PY{p}{(}\PY{n}{question}\PY{p}{,} \PY{n}{new\PYZus{}index}\PY{p}{,} \PY{n}{equations}\PY{p}{)}
+                  \PY{n}{equations}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{question}\PY{p}{[}\PY{n}{index}\PY{p}{:}\PY{n}{new\PYZus{}index}\PY{p}{]}\PY{p}{)}
+                  \PY{k}{return} \PY{n}{equations}
+              \PY{k}{else}\PY{p}{:}
+                  \PY{n}{equations} \PY{o}{=} \PY{n}{extract\PYZus{}equations\PYZus{}recursive}\PY{p}{(}\PY{n}{question}\PY{p}{,} \PY{n}{index}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{equations}\PY{p}{)}
+                  \PY{k}{return} \PY{n}{equations}
+          
+          \PY{c}{\PYZsh{} Helper function that determines if a given index in a string might be part (or the start?) of an equation}
+          \PY{k}{def} \PY{n+nf}{maybe\PYZus{}equation}\PY{p}{(}\PY{n}{question}\PY{p}{,} \PY{n}{index}\PY{p}{)}\PY{p}{:}
+              \PY{k}{if} \PY{n}{index} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{question}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{:}
+                  \PY{k}{return} \PY{n+nb+bp}{False}
+              \PY{n}{letter} \PY{o}{=} \PY{n}{question}\PY{p}{[}\PY{n}{index}\PY{p}{]}
+              \PY{k}{if} \PY{n}{letter} \PY{o+ow}{in} \PY{n}{letters}\PY{p}{:}
+                  \PY{k}{if} \PY{n}{question}\PY{p}{[}\PY{n}{index}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{letters} \PY{o+ow}{and} \PY{n}{question}\PY{p}{[}\PY{n}{index}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{letters}\PY{p}{:}
+                      \PY{k}{return} \PY{n+nb+bp}{True}
+              \PY{k}{elif} \PY{n}{letter} \PY{o+ow}{in} \PY{p}{(}\PY{n}{math\PYZus{}symbols} \PY{o}{+} \PY{n}{numbers}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{return} \PY{n+nb+bp}{True}
+              \PY{k}{return} \PY{n+nb+bp}{False}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}175}]:} \PY{c}{\PYZsh{} The function above returns some false positives. Filter these.}
+          \PY{k}{def} \PY{n+nf}{extract\PYZus{}equations}\PY{p}{(}\PY{n}{question}\PY{p}{)}\PY{p}{:}
+              \PY{n}{question} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n}{question} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}
+              \PY{n}{equations} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{n}{equations} \PY{o}{=} \PY{n}{extract\PYZus{}equations\PYZus{}recursive}\PY{p}{(}\PY{n}{question}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{equations}\PY{p}{)}
+              \PY{n}{equations} \PY{o}{=} \PY{n+nb}{reversed}\PY{p}{(}\PY{n}{equations}\PY{p}{)}
+              \PY{n}{equations} \PY{o}{=} \PY{p}{[}\PY{n}{equation}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations}\PY{p}{]}
+              \PY{n}{equations2} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations}\PY{p}{:}
+                  \PY{n}{equations2} \PY{o}{+}\PY{o}{=} \PY{n}{equation}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{  }\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{equations2} \PY{o}{=} \PY{p}{[}\PY{n}{equation}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations2}\PY{p}{]}
+              \PY{k}{return} \PY{n}{equations2}
+          
+          \PY{c}{\PYZsh{} Further filtering..}
+          \PY{k}{def} \PY{n+nf}{extract\PYZus{}only\PYZus{}equations}\PY{p}{(}\PY{n}{question}\PY{p}{)}\PY{p}{:}
+              \PY{n}{question} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n}{question} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}
+              \PY{n}{equations} \PY{o}{=} \PY{n}{extract\PYZus{}equations}\PY{p}{(}\PY{n}{question}\PY{p}{)}
+              \PY{n}{actual\PYZus{}equations} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations}\PY{p}{:}
+                  \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{equation}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{2}\PY{p}{:}
+                      \PY{k}{for} \PY{n}{symbol} \PY{o+ow}{in} \PY{n}{math\PYZus{}symbols}\PY{p}{:}
+                          \PY{k}{if} \PY{n}{symbol} \PY{o+ow}{in} \PY{n}{equation}\PY{p}{:}
+                              \PY{n}{actual\PYZus{}equations}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{equation}\PY{p}{)}
+                              \PY{k}{break}
+              \PY{k}{return} \PY{n}{actual\PYZus{}equations}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}176}]:} \PY{c}{\PYZsh{} Demonstrate equation extraction}
+          \PY{k}{print} \PY{n}{extract\PYZus{}equations}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ x+y+3z = 600  x+y+z = 400  In the system of equations above, what is the value of x+y?}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['x+y+3z = 600', 'x+y+z = 400', 'x+y']
+    \end{Verbatim}
+
+    Now we're ready to tackle the ``ones'' questions. The following function
+takes a look at all of the extracted equations, decides which are
+constraints and which is the desired solution, and then automates the
+usage of all the previous functions to solve the equations and match the
+solution with the choices.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}181}]:} \PY{c}{\PYZsh{} This function compiles all of the process of solving a question in the \PYZdq{}ones\PYZdq{} category.}
+          \PY{k}{def} \PY{n+nf}{solve\PYZus{}ones}\PY{p}{(}\PY{n}{question}\PY{p}{)}\PY{p}{:}
+          
+              \PY{n}{question\PYZus{}text} \PY{o}{=} \PY{n}{question}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+              \PY{n}{choices} \PY{o}{=} \PY{n}{question}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+          
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{question: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{question\PYZus{}text}
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{choices: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{choices}
+          
+              \PY{n}{junk} \PY{o}{=} \PY{n}{extract\PYZus{}equations}\PY{p}{(}\PY{n}{question\PYZus{}text}\PY{p}{)}
+              \PY{n}{equations} \PY{o}{=}  \PY{n}{extract\PYZus{}only\PYZus{}equations}\PY{p}{(}\PY{n}{question\PYZus{}text}\PY{p}{)}
+          
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{junk: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{junk}
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{equations: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{equations}
+          
+              \PY{n}{sympy\PYZus{}equations} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{equations}\PY{p}{:}
+                  \PY{n}{sympy\PYZus{}equations} \PY{o}{+}\PY{o}{=} \PY{n}{my\PYZus{}sympify}\PY{p}{(}\PY{n}{equation}\PY{p}{)} 
+          
+              \PY{n}{sympy\PYZus{}junk} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{junk}\PY{p}{:}
+                  \PY{n}{sympy\PYZus{}junk} \PY{o}{+}\PY{o}{=} \PY{n}{my\PYZus{}sympify}\PY{p}{(}\PY{n}{equation}\PY{p}{)} 
+          
+              \PY{c}{\PYZsh{} We hypothesize that, if there\PYZsq{}s not a real equation at the end of the junk, the solution form is a junk variable. }
+              \PY{c}{\PYZsh{}Else, it\PYZsq{}s a real equation.}
+              \PY{n}{last\PYZus{}real\PYZus{}equation} \PY{o}{=} \PY{n}{sympy\PYZus{}equations}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+              \PY{n}{junk\PYZus{}index} \PY{o}{=} \PY{n}{sympy\PYZus{}junk}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{last\PYZus{}real\PYZus{}equation}\PY{p}{)}
+          
+              \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{sympy\PYZus{}junk}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{junk\PYZus{}index} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{:}
+                  \PY{n}{solution\PYZus{}form} \PY{o}{=} \PY{n}{sympy\PYZus{}junk}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                  \PY{n}{sympy\PYZus{}equations} \PY{o}{=} \PY{n}{sympy\PYZus{}equations}
+              \PY{k}{else}\PY{p}{:}
+                  \PY{n}{solution\PYZus{}form} \PY{o}{=} \PY{n}{sympy\PYZus{}equations}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                  \PY{n}{sympy\PYZus{}equations} \PY{o}{=} \PY{n}{sympy\PYZus{}equations}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+          
+          
+          
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Sympy equations: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{sympy\PYZus{}equations}
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{solution form: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{solution\PYZus{}form}
+          
+          
+              \PY{n}{solutions} \PY{o}{=} \PY{n}{numerical\PYZus{}solve\PYZus{}equations}\PY{p}{(}\PY{n}{sympy\PYZus{}equations}\PY{p}{,} \PY{n}{solution\PYZus{}form}\PY{p}{)}
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Solutions: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{solutions}
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Matched Solution: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{match\PYZus{}solution}\PY{p}{(}\PY{n}{solutions}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{choices}\PY{p}{)}
+          
+              \PY{k}{try}\PY{p}{:}
+                  \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Correct solution: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{question}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+              \PY{k}{except}\PY{p}{:}
+                  \PY{k}{pass}
+\end{Verbatim}
+
+    Here's some samples of this code in operation.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}184}]:} \PY{n}{solve\PYZus{}ones}\PY{p}{(}\PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+question:  If n and k are positive integers and 8\^{}n = 2\^{}k, what is the value of n/k?
+choices:  [0.25, 0.3333333333333333, 0.5, 3, 4]
+junk:  ['n', 'k', '8\^{}n = 2\^{}k', 'n/k']
+equations:  ['8\^{}n = 2\^{}k', 'n/k']
+Sympy equations:  [8**n == 2**k]
+solution form:  n/k
+Solutions:  ([(-24, -8), (-21, -7), (-18, -6), (-15, -5), (-12, -4), (-9, -3), (-6, -2), (-3, -1), (0, 0), (3, 1), (6, 2), (9, 3), (12, 4), (15, 5), (18, 6), (21, 7), (24, 8)], [1/3, 1/3, 1/3, 1/3, 1/3, 1/3, 1/3, 1/3, nan, 1/3, 1/3, 1/3, 1/3, 1/3, 1/3, 1/3, 1/3])
+Matched Solution:  collapsed solutions!
+1
+Correct solution:  1
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}183}]:} \PY{n}{solve\PYZus{}ones}\PY{p}{(}\PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+question:  If p and n are integers such that p > n > 0 and
+p\^{}2 - n\^{}2 = 12, which of the following can be the value of p - n?
+choices:  POSSIBLY MULTIPLE ANSWERS
+junk:  ['p', 'n', 'p > n > 0', 'p\^{}2 - n\^{}2 = 12', 'p - n']
+equations:  ['p > n > 0', 'p\^{}2 - n\^{}2 = 12', 'p - n']
+Sympy equations:  [p > n, n > 0, -n**2 + p**2 == 12]
+solution form:  -n + p
+Solutions:  ([(2, 4)], [2])
+Matched Solution:  None
+Correct solution:  [1, 2, 4]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}186}]:} \PY{n}{solve\PYZus{}ones}\PY{p}{(}\PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+question:  If (x-2)\^{}2 = 49, then x could be
+choices:  [-9, -7, 2, 5, 9]
+junk:  ['(x-2)\^{}2 = 49', 'x']
+equations:  ['(x-2)\^{}2 = 49']
+Sympy equations:  [(x - 2)**2 == 49]
+solution form:  x
+Solutions:  ([-5, 9], [-5, 9])
+Matched Solution:  4
+Correct solution:  4
+    \end{Verbatim}
+
+    Next, we progress to the ``twos'' category. These are similar to the
+``ones'', except that the equations are at least partially expressed in
+natural lanugage. They will be tackled by converting the natural
+language down into equation form and then using the same solvers from
+the previous section.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}241}]:} \PY{c}{\PYZsh{} Twos}
+          \PY{n}{questions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{If 10 + x is 5 more than 10, what is the value of 2*x?}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The result when a number is divided by 2 is equal to the result when that same number is }
+          \PY{l+s}{divided by 4. What is that number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If t is a number greater than 1, then t\PYZca{}2 is how much}
+          \PY{l+s}{greater than t?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t * (t\PYZhy{}1)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{(t\PYZhy{}1) * (t+1)}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{Three more than twice a number is equal to 4.}
+          \PY{l+s}{What is the number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} 2}
+          \PY{n}{questions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{If 3 times a number is equal to 3/2, what is the number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    So, the two's are very similar in form to the one's - the difference
+being that some of the equations are written into the question text.
+Thus, we can't simply extract the equations and discard the text as we
+did for the one's. However, once the equations are extracted, solving
+the rest of the problem is exactly identical.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}223}]:} \PY{c}{\PYZsh{} This function compiles all of the process of solving a question in the \PYZdq{}twos\PYZdq{} category. It\PYZsq{}s nearly identical to the \PYZdq{}ones\PYZdq{} solver.}
+          \PY{k}{def} \PY{n+nf}{solve\PYZus{}twos}\PY{p}{(}\PY{n}{question\PYZus{}text}\PY{p}{,} \PY{n}{choices}\PY{p}{,} \PY{n}{correct\PYZus{}solution}\PY{p}{)}\PY{p}{:}
+          
+              \PY{c}{\PYZsh{}print \PYZdq{}question: \PYZdq{}, question\PYZus{}text}
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{choices: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{choices}
+          
+          
+              \PY{n}{sympy\PYZus{}equations} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{equation} \PY{o+ow}{in} \PY{n}{question\PYZus{}text}\PY{p}{:}
+                  \PY{n}{sympy\PYZus{}equations} \PY{o}{+}\PY{o}{=} \PY{n}{my\PYZus{}sympify}\PY{p}{(}\PY{n}{equation}\PY{p}{)} 
+          
+              \PY{n}{equation} \PY{o}{=} \PY{n}{sympy\PYZus{}equations}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+              \PY{n}{solution\PYZus{}form} \PY{o}{=} \PY{n}{sympy\PYZus{}equations}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+                  
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{equation: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{equation}
+              \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{solution form: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{solution\PYZus{}form}
+          
+          
+              \PY{n}{solutions} \PY{o}{=} \PY{n}{numerical\PYZus{}solve\PYZus{}equations}\PY{p}{(}\PY{p}{[}\PY{n}{equation}\PY{p}{]}\PY{p}{,} \PY{n}{solution\PYZus{}form}\PY{p}{)}
+              \PY{k}{print} \PY{n}{solutions}
+              \PY{k}{print} \PY{n}{match\PYZus{}solution}\PY{p}{(}\PY{n}{solutions}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{choices}\PY{p}{)}
+          
+              \PY{k}{try}\PY{p}{:}
+                  \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{correct solution: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{correct\PYZus{}solution}
+              \PY{k}{except}\PY{p}{:}
+                  \PY{k}{pass}
+\end{Verbatim}
+
+    This function handles converting the math-speak natural language into
+equations. It takes advantage of the fact that all questions in the
+``twos'' categories have similar format (two clauses separated by
+punctionation, with the desired solution in the second clause).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}128}]:} \PY{c}{\PYZsh{} Another character set, of common math variables}
+          \PY{n}{math\PYZus{}letters} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{x}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{y}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{n}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+          
+          \PY{c}{\PYZsh{} Converts natural language \PYZdq{}twos\PYZdq{} question to equation}
+          \PY{k}{def} \PY{n+nf}{math\PYZus{}speak}\PY{p}{(}\PY{n}{question}\PY{p}{)}\PY{p}{:}
+              
+              \PY{n}{split} \PY{o}{=} \PY{n}{question}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{.}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{k}{if}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{split}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{split} \PY{o}{=} \PY{n}{question}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{,}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{k}{if}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{split}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                      \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{question cannot be split!}\PY{l+s}{\PYZdq{}}
+                      \PY{k}{return} 
+              
+              \PY{n}{result} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{half} \PY{o+ow}{in} \PY{n}{split}\PY{p}{:}
+                  
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{?}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{one}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{1}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{two}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{three}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{3}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{four}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{4}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{five}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{5}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{six}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{6}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{seven}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{7}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{eight}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{8}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{nine}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{9}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  
+                  
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{what is}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{is divided by}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{/}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{divided by}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{/}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{greater than}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZgt{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{more than}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{+}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{less than}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZlt{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{is equal}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{=}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{equals}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{=}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{equal}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{=}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{times}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{*}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{twice}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{2*}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{a number}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{number}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{x}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              
+                  \PY{n}{half} \PY{o}{=} \PY{n}{half}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{is}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{=}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                  
+                  \PY{k}{print} \PY{n}{half}
+                  
+                  \PY{n}{sub\PYZus{}result} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}
+                  \PY{k}{for} \PY{n}{word} \PY{o+ow}{in} \PY{n}{half}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
+                      \PY{c}{\PYZsh{}print word}
+                      \PY{n}{clean} \PY{o}{=} \PY{n+nb+bp}{True}
+                      \PY{k}{for} \PY{n}{char} \PY{o+ow}{in} \PY{n}{word}\PY{p}{:}
+                          \PY{k}{if} \PY{n}{char} \PY{o+ow}{in} \PY{n}{math\PYZus{}symbols} \PY{o}{+} \PY{n}{numbers}\PY{p}{:}
+                              \PY{n}{clean} \PY{o}{=} \PY{n+nb+bp}{False}
+                      \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{word}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                          \PY{k}{if} \PY{n}{word}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o+ow}{in} \PY{n}{math\PYZus{}letters}\PY{p}{:}
+                              \PY{n}{clean} \PY{o}{=} \PY{n+nb+bp}{False}
+                      \PY{k}{if} \PY{o+ow}{not} \PY{n}{clean}\PY{p}{:}
+                          \PY{n}{sub\PYZus{}result} \PY{o}{+}\PY{o}{=} \PY{n}{word}
+                  \PY{n}{result}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{sub\PYZus{}result}\PY{p}{)}
+              \PY{k}{return} \PY{n}{result}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}208}]:} \PY{c}{\PYZsh{} An example of the execution of this function}
+          \PY{n}{math\PYZus{}speak}\PY{p}{(}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{The result when a number is divided by 2 is equal to the result when that same number is }
+          \PY{l+s}{divided by 4. What is that number?}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+the result when x / 2 = to the result when that same x / 4
+  that x
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}208}]:} ['x/2=x/4', 'x']
+\end{Verbatim}
+        
+    The following are examples of some of the ``twos'' being processed.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}227}]:} \PY{n}{current} \PY{o}{=} \PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+          \PY{n}{text} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+          \PY{n}{choices} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+          \PY{n}{correct\PYZus{}solution} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+          
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Original Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          \PY{n}{text} \PY{o}{=} \PY{n}{math\PYZus{}speak}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Edited Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          
+          \PY{n}{solve\PYZus{}twos}\PY{p}{(}\PY{n}{text}\PY{p}{,} \PY{n}{choices}\PY{p}{,} \PY{n}{correct\PYZus{}solution}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Original Text:  If 10 + x is 5 more than 10, what is the value of 2*x?
+if 10 + x = 5 + 10
+  the value of 2*x
+Edited Text:  ['10+x=5+10', '2*x']
+choices:  [-5, 5, 10, 25, 50]
+equation:  x + 10 == 15
+solution form:  2*x
+([5.0], [10.0000000000000])
+2
+correct solution:  2
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}237}]:} \PY{n}{current} \PY{o}{=} \PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+          \PY{n}{text} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+          \PY{n}{choices} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+          \PY{n}{correct\PYZus{}solution} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+          
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Original Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          \PY{n}{text} \PY{o}{=} \PY{n}{math\PYZus{}speak}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Edited Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          
+          \PY{n}{solve\PYZus{}twos}\PY{p}{(}\PY{n}{text}\PY{p}{,} \PY{n}{choices}\PY{p}{,} \PY{n}{correct\PYZus{}solution}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Original Text:  The result when a number is divided by 2 is equal to the result when that same number is 
+divided by 4. What is that number?
+the result when x / 2 = to the result when that same x / 4
+  that x
+Edited Text:  ['x/2=x/4', 'x']
+choices:  [-4, -2, 0, 2, 4]
+equation:  x/2 == x/4
+solution form:  x
+([0.0], [0.0])
+2
+correct solution:  2
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}251}]:} \PY{c}{\PYZsh{} This one doesn\PYZsq{}t work \PYZhy{} the parser assumes that the keyword \PYZdq{}number\PYZdq{} refers to a variable not mentioned in the text,}
+          \PY{c}{\PYZsh{} whereas this one is labelled as t already. }
+          \PY{n}{current} \PY{o}{=} \PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+          \PY{n}{text} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+          \PY{n}{choices} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+          \PY{n}{correct\PYZus{}solution} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+          
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Original Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          \PY{n}{text} \PY{o}{=} \PY{n}{math\PYZus{}speak}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Edited Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Original Text:  If t is a number greater than 1, then t\^{}2 is how much
+greater than t?
+if t = x > 1
+ then t\^{}2 = how much> t
+Edited Text:  ['t=x>1', 't\^{}2=much>t']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}247}]:} \PY{n}{current} \PY{o}{=} \PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+          \PY{n}{text} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+          \PY{n}{choices} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+          \PY{c}{\PYZsh{}correct\PYZus{}solution = current[4]}
+          
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Original Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          \PY{n}{text} \PY{o}{=} \PY{n}{math\PYZus{}speak}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Edited Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          
+          \PY{n}{solve\PYZus{}twos}\PY{p}{(}\PY{n}{text}\PY{p}{,} \PY{n}{choices}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{NO CHOICES}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Original Text:  Three more than twice a number is equal to 4.
+What is the number?
+3 + 2* x = to 4
+ the x
+Edited Text:  ['3+2*x=4', 'x']
+choices:  NO CHOICES
+equation:  2*x + 3 == 4
+solution form:  x
+([0.5], [0.500000000000000])
+None
+correct solution:  NO CHOICES
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}250}]:} \PY{n}{current} \PY{o}{=} \PY{n}{questions}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+          \PY{n}{text} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+          \PY{n}{choices} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+          \PY{n}{correct\PYZus{}solution} \PY{o}{=} \PY{n}{current}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+          
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Original Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          \PY{n}{text} \PY{o}{=} \PY{n}{math\PYZus{}speak}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Edited Text: }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{text}
+          
+          \PY{n}{solve\PYZus{}twos}\PY{p}{(}\PY{n}{text}\PY{p}{,} \PY{n}{choices}\PY{p}{,} \PY{n}{correct\PYZus{}solution}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Original Text:  If 3 times a number is equal to 3/2, what is the number?
+if 3 * x = to 3/2
+  the x
+Edited Text:  ['3*x=3/2', 'x']
+choices:  [0.3333333333333333, 0.5, 0.6666666666666666, 2, 3]
+equation:  3*x == 3/2
+solution form:  x
+([0.5], [0.500000000000000])
+1
+correct solution:  1
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
